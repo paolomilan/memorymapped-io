@@ -24,7 +24,7 @@ See also the list of [contributors](https://github.com/pkellz/csce311-project1/g
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/paolomilan/csce311-project3/blob/master/LICENSE) file for details
 
 ## Acknowledgments
 
