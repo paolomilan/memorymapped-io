@@ -1,6 +1,0 @@
-hello
-test
-file
-d
-e
-t
