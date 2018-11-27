@@ -1,22 +1,30 @@
 #include <stdlib.h>
 #include <iostream>
+#include <map>
 #include <fstream>
 #include <string>
 #include <stdio.h>
 #include <string.h>
 #include <vector>
-
+#include <stdlib.h>
 using namespace std;
+
+void printCounts(map<char, int>);
+map<char, int> populateMap();
 
 int main(int argc, char** argv)
 {
+
+	map<char, int> m = populateMap();
+	printCounts(m);
+
    	ifstream inFile;
 	ofstream outFile;
-	char word;
+
 	string fileText ="";
-     	string toLookFor=argv[1];
-     	//Open file
+     	// Read file name from command line
   	inFile.open(argv[1]);
+	// File not found
      	if (!inFile){
         	cerr << "Unable to open file";
         	exit(1);
@@ -29,6 +37,24 @@ int main(int argc, char** argv)
         	fileText = buffer;
          	array.push_back(fileText);
       	}
-      	cout << array[0] << endl;
+	// Whole text is now in array[0]
+
       	inFile.close();
 }
+
+void printCounts(map<char, int> m)
+{
+        cout << "Printing Counts..." << endl;
+        map<char,int>::iterator it = m.begin();
+        for(it = m.begin(); it!=m.end();++it)
+                cout << it->first << " => " << it->second << '\n';
+}
+
+map<char, int> populateMap()
+{
+        map<char, int> m;
+        for(int i = 97; i < 123; i++)
+                m.insert(pair<char, int>(static_cast<char>(i),0));
+        return m;
+}
+
