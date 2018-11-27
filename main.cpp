@@ -11,12 +11,13 @@ using namespace std;
 
 void printCounts(map<char, int>);
 map<char, int> populateMap();
+map<char, int> countOccurrences(map<char, int>, vector<string>, int);
 
 int main(int argc, char** argv)
 {
 
 	map<char, int> m = populateMap();
-	printCounts(m);
+
 
    	ifstream inFile;
 	ofstream outFile;
@@ -31,15 +32,31 @@ int main(int argc, char** argv)
       	}
     	char buffer[256];
       	vector<string> array;
+	int numLines(-1);
 	while (!inFile.eof())
       	{
+		numLines++;
 		inFile.getline(buffer, 256);
         	fileText = buffer;
          	array.push_back(fileText);
       	}
 	// Whole text is now in array[0]
-
+	map<char, int> z = countOccurrences(m, array, numLines);
+	printCounts(z);
       	inFile.close();
+}
+
+map<char, int> countOccurrences(map<char, int> m, vector<string> array, int numLines)
+{
+
+	for(int i = 0; i < numLines;i++)
+	{
+		for(int j = 0; j < array[i].size();j++)
+		{
+			m.find(array[i][j])->second++;
+		}
+	}
+	return m;
 }
 
 void printCounts(map<char, int> m)
