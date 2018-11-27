@@ -1,12 +1,8 @@
-#include <stdlib.h>
 #include <iostream>
 #include <map>
 #include <fstream>
-#include <string>
-#include <stdio.h>
-#include <string.h>
 #include <vector>
-#include <stdlib.h>
+
 using namespace std;
 
 void printCounts(map<char, int>);
@@ -15,13 +11,9 @@ map<char, int> countOccurrences(map<char, int>, vector<string>, int);
 
 int main(int argc, char** argv)
 {
-
 	map<char, int> m = populateMap();
-
-
    	ifstream inFile;
 	ofstream outFile;
-
 	string fileText ="";
      	// Read file name from command line
   	inFile.open(argv[1]);
@@ -41,21 +33,16 @@ int main(int argc, char** argv)
          	array.push_back(fileText);
       	}
 	// Whole text is now in array[0]
-	map<char, int> z = countOccurrences(m, array, numLines);
-	printCounts(z);
+	m = countOccurrences(m, array, numLines);
+	printCounts(m);
       	inFile.close();
 }
 
 map<char, int> countOccurrences(map<char, int> m, vector<string> array, int numLines)
 {
-
 	for(int i = 0; i < numLines;i++)
-	{
 		for(int j = 0; j < array[i].size();j++)
-		{
 			m.find(array[i][j])->second++;
-		}
-	}
 	return m;
 }
 
