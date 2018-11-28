@@ -4,10 +4,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <fcntl.h>
-
 #include <map>
-#include <vector>
-// TODO - Are uppercase and lowercase letters together?
 
 using namespace std;
 
@@ -54,7 +51,7 @@ map<char, int> populateMap()
         for(int i = 97; i < 123; i++)
                 m.insert(pair<char, int>(static_cast<char>(i),0));
 	// Capital Letters
-	for(int i = 65; i < 90; i++)
+	for(int i = 65; i < 91; i++)
 		m.insert(pair<char, int>(static_cast<char>(i),0));
         return m;
 }
