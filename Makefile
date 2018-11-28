@@ -1,4 +1,6 @@
-app : main.cpp
-	g++ main.cpp -std=c++11 -Wall
+io : io.cpp
+	g++ io.cpp -std=c++11 -Wall -o io
+mmio : mmio.cpp
+	g++ mmio.cpp -std=c++11 -Wall -o mmio
 clean:
-	rm a.out
+	rm io mmio -f
