@@ -48,7 +48,7 @@ map<char, int> countOccurrences(map<char, int> m, vector<string> array, int numL
 
 void printCounts(map<char, int> m)
 {
-        cout << "Printing Counts..." << endl;
+        cout << "Printing Occurrences..." << endl;
         map<char,int>::iterator it = m.begin();
         for(it = m.begin(); it!=m.end();++it)
                 cout << it->first << " => " << it->second << '\n';
@@ -57,8 +57,13 @@ void printCounts(map<char, int> m)
 map<char, int> populateMap()
 {
         map<char, int> m;
+	// Lowercase Letters
         for(int i = 97; i < 123; i++)
                 m.insert(pair<char, int>(static_cast<char>(i),0));
+	// Capital Letters
+        for(int i = 65; i < 90; i++)
+                m.insert(pair<char, int>(static_cast<char>(i),0));
+
         return m;
 }
 
