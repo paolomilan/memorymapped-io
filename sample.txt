@@ -1,0 +1,3 @@
+This is a sample text file
+This was made for CSCE 311
+This is Project 3

@@ -2,6 +2,7 @@
 #include <map>
 #include <fstream>
 #include <vector>
+#include "timer.cpp"
 
 using namespace std;
 
@@ -15,7 +16,11 @@ int main(int argc, char** argv)
    	ifstream inFile;
 	ofstream outFile;
 	string fileText ="";
-     	// Read file name from command line
+    
+    // First timestamp
+    timestamp_t t0 = get_timestamp();
+    
+    // Read file name from command line
   	inFile.open(argv[1]);
 	// File not found
      	if (!inFile){
@@ -34,8 +39,18 @@ int main(int argc, char** argv)
       	}
 	// Whole text is now in array[0]
 	m = countOccurrences(m, array, numLines);
-	printCounts(m);
-      	inFile.close();
+	
+    // put timestamp t1 before printing since printing take a long time
+    timestamp_t t1 = get_timestamp();
+
+    printCounts(m);
+    
+    // Printing out execution time
+    double secs = (t1 - t0) / 1000000.0L;
+    cout << "Execution time for regular file i/o: " << secs << " seconds" 
+        << endl;
+   
+    inFile.close(); 
 }
 
 map<char, int> countOccurrences(map<char, int> m, vector<string> array, int numLines)

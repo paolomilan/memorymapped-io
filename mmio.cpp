@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <map>
+#include "timer.cpp"
 
 using namespace std;
 
@@ -20,14 +21,24 @@ int main(int argc, char** argv)
 
 	if(fstat(fd, &sb) == -1)
 		perror("couldn't get file size");
+    
+    // First timestamp for timing execution time
+    timestamp_t t0 = get_timestamp();
 
 	char *file_in_memory = (char*)mmap(NULL, sb.st_size, PROT_READ,MAP_SHARED,fd,0);
 	map<char, int> m = populateMap();
 	m = countOccurrences(m, file_in_memory);
+    
+    // Second timestamp before printing since printing can alter time
+    timestamp_t t1 = get_timestamp();
+
   	printCounts(m);
 
-	close(fd);
-	return 0;
+    double secs = (t1 - t0) / 1000000.0L;
+    cout << " Execution time for memory mapped file i/o: " 
+        << secs << " seconds" << endl;
+    close(fd);
+    return 0;
 }
 map<char, int> countOccurrences(map<char, int> m, char *array)
 {
