@@ -15,7 +15,7 @@ Run the following command:
 You can then run either the io "app" or mmio "app" followed by the desired text file
 name as follows: 
 
-    $ ./io anna.txt     or      > $ ./mmio anna.txt
+    $ ./io anna.txt     or      $ ./mmio anna.txt
     
 You should see the print out of the number of instances a character appears in the
 input .txt file. You should also see the execution time of the program.
