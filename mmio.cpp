@@ -40,13 +40,15 @@ int main(int argc, char** argv)
     close(fd);
     return 0;
 }
+
+// Maps and counts
 map<char, int> countOccurrences(map<char, int> m, char *array)
 {
 	for(int i = 0; array[i] != '\0'; i++)
 		m.find(array[i])->second++;
         return m;
 }
-
+// Print
 void printCounts(map<char, int> m)
 {
         cout << "Printing Occurrences..." << endl;
@@ -54,7 +56,7 @@ void printCounts(map<char, int> m)
         for(it = m.begin(); it!=m.end();++it)
                 cout << it->first << " => " << it->second << '\n';
 }
-
+// Populate our map
 map<char, int> populateMap()
 {
         map<char, int> m;
