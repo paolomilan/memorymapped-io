@@ -3,4 +3,4 @@ io : io.cpp
 mmio : mmio.cpp
 	g++ mmio.cpp -std=c++11 -Wall -o mmio
 clean:
-	rm io mmio -f
+	@rm io mmio

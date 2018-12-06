@@ -35,7 +35,7 @@ int main(int argc, char** argv)
   	printCounts(m);
 
     double secs = (t1 - t0) / 1000000.0L;
-    cout << " Execution time for memory mapped file i/o: " 
+    cout << "Execution time for memory mapped file i/o: " 
         << secs << " seconds" << endl;
     close(fd);
     return 0;
