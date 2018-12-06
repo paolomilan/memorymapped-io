@@ -72,13 +72,8 @@ void printCounts(map<char, int> m)
 map<char, int> populateMap()
 {
         map<char, int> m;
-	// Lowercase Letters
-        for(int i = 97; i < 123; i++)
+	for(int i = 32; i < 127; i++)
                 m.insert(pair<char, int>(static_cast<char>(i),0));
-	// Capital Letters
-        for(int i = 65; i < 91; i++)
-                m.insert(pair<char, int>(static_cast<char>(i),0));
-
         return m;
 }
 
